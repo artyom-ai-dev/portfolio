@@ -11,9 +11,9 @@
 
 | # | Кейс | Тип |
 |---|------|-----|
-| 01 | [AI platform: RAG, agents, meetings](cases/01-ai-assistant-rag.md) | AI |
-| 02 | [Messenger ↔ issue tracker sync](cases/02-jira-express-sync.md) | Integrations |
-| 03 | [Identity self-service bot](cases/03-pass-bot-ldap.md) | Automation |
+| 01 | [AI platform: RAG, agents, meetings](cases/01-ai-platform.md) | AI |
+| 02 | [Messenger ↔ issue tracker sync](cases/02-messenger-tracker-sync.md) | Integrations |
+| 03 | [Identity self-service bot](cases/03-identity-self-service.md) | Automation |
 | 04 | [Internal web + Excel automation](cases/04-excel-web-automation.md) | Fullstack / data |
 
 ---
