@@ -1,42 +1,39 @@
-# 01 · AI Assistant + RAG + meeting pipeline
+# 01 · AI platform: RAG, agents, meetings
 
-## Задача
-Собрать корпоративный AI-контур: ответы по базе знаний, агенты с инструментами, обработка встреч (аудио → текст → протокол) без утечки чувствительных данных во внешние SaaS там, где это запрещено политикой.
+## Problem
+Need a corporate AI contour: answers over internal knowledge, agents with tools, meeting processing (audio → text → protocol), with respect to data-handling constraints.
 
-## Что сделал
-- Мультиагентский бэкенд **AI Assistant** (FastAPI): роутинг агентов, tool-calling, коллекции документов, суммаризация встреч
-- **Confluence Sync Worker**: инкрементальная индексация Confluence → очистка HTML → чанкинг → эмбеддинги (TEI / multilingual-e5) → **Qdrant**
-- **Clean Audio Service**: очистка речи DeepFilterNet3 + ffmpeg как отдельный микросервис
-- Связка с контуром записи встреч (**Peregovornaya**): сегменты → очистка → STT → протокол
+## What I built
+- Multi-agent backend on FastAPI: routing, tool-calling, document collections, meeting summarization
+- Knowledge indexer: source pages → cleanup → chunking → embeddings → vector DB
+- Audio cleanup microservice for speech enhancement before STT
+- End-to-end meeting flow: recording segments → cleanup → transcription → protocol
 
-## Архитектура
+## Flow
 
 ```mermaid
 sequenceDiagram
   participant U as User
-  participant AI as AI Assistant
-  participant Q as Qdrant
-  participant CA as Clean Audio
-  participant LLM as Ollama / GigaChat
+  participant A as Assistant
+  participant V as Vector DB
+  participant C as Audio cleanup
+  participant L as LLM
 
-  U->>AI: вопрос / файл / аудио встречи
+  U->>A: question / file / meeting audio
   alt RAG
-    AI->>Q: semantic search
-    Q-->>AI: chunks
+    A->>V: semantic search
+    V-->>A: chunks
   else audio
-    AI->>CA: clean audio
-    CA-->>AI: enhanced wav/ogg
+    A->>C: clean audio
+    C-->>A: enhanced audio
   end
-  AI->>LLM: prompt + context / tools
-  LLM-->>AI: answer / protocol JSON
-  AI-->>U: результат
+  A->>L: prompt + context / tools
+  L-->>A: answer / structured protocol
+  A-->>U: result
 ```
 
-## Стек
-Python, FastAPI, LangChain, Qdrant, TEI embeddings, Ollama, GigaChat, PyTorch, Docker
+## Stack
+Python, FastAPI, LangChain, Qdrant, embeddings/TEI, Ollama/GigaChat, PyTorch, Docker
 
-## Результат
-Рабочий production-контур: знания из Confluence доступны агенту, встречи проходят через очистку и суммаризацию, сервисы деплоятся контейнерами и сопровождаются внутри контура предприятия.
-
-## Репозитории
-Private: `ai-assistant`, `confluence-sync-worker`, `clean-audio-service` (+ участие в `Peregovornaya`)
+## Outcome
+Production services in an enterprise contour: knowledge search via RAG, meeting protocols through an audio pipeline, containerized deploy and ownership of the stack.

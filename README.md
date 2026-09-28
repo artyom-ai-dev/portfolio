@@ -1,82 +1,55 @@
 # Portfolio · Artem Tyukin
 
-Публичная витрина кейсов. Исходники рабочих систем остаются в **private** репозиториях — здесь описания, схемы и стек без корпоративных секретов.
+Публичные разборы кейсов без исходников и без корпоративных секретов.
 
 **Профиль:** [github.com/artyom-ai-dev](https://github.com/artyom-ai-dev)  
-**Контакт:** tyukin69@bk.ru · +7 (982) 690-26-23
+**Контакт:** tyukin69@bk.ru
 
 ---
 
 ## Кейсы
 
-| # | Кейс | Тип | Стек |
-|---|------|-----|------|
-| 01 | [AI Assistant + RAG + meeting pipeline](cases/01-ai-assistant-rag.md) | AI platform | FastAPI, LangChain, Qdrant, Ollama/GigaChat |
-| 02 | [Jira ↔ Express sync](cases/02-jira-express-sync.md) | Integration | FastAPI, webhooks, Jira REST, BotX |
-| 03 | [AD password self-service bot](cases/03-pass-bot-ldap.md) | Automation | Flask, LDAP/LDAPS, webhooks |
-| 04 | [Excel / internal web automation](cases/04-excel-web-automation.md) | Fullstack + data | Flask, pandas, openpyxl, LDAP |
+| # | Кейс | Тип |
+|---|------|-----|
+| 01 | [AI platform: RAG, agents, meetings](cases/01-ai-assistant-rag.md) | AI |
+| 02 | [Messenger ↔ issue tracker sync](cases/02-jira-express-sync.md) | Integrations |
+| 03 | [Identity self-service bot](cases/03-pass-bot-ldap.md) | Automation |
+| 04 | [Internal web + Excel automation](cases/04-excel-web-automation.md) | Fullstack / data |
 
 ---
 
-## Карта AI-контура
+## AI contour
 
 ```mermaid
 flowchart LR
-  subgraph Sources
-    CF[Confluence]
-    CAD[CAD / CAE / ERP]
-    MIC[Meeting audio]
-  end
-
-  subgraph Services
-    W[Confluence Sync Worker]
-    CA[Clean Audio Service]
-    AI[AI Assistant<br/>agents · tools · RAG]
-  end
-
-  subgraph Store
-    QD[(Qdrant)]
-    DB[(App DB)]
-  end
-
-  U[Users / messengers / panels]
-
-  CF --> W --> QD
-  W --> AI
-  MIC --> CA --> AI
-  CAD -.-> AI
-  QD --> AI
-  AI --> DB
-  AI --> U
+  Docs[Knowledge base] --> Indexer[Indexer / embeddings]
+  Indexer --> Vector[(Vector DB)]
+  Vector --> Assistant[AI Assistant]
+  Audio[Meeting audio] --> Clean[Audio cleanup]
+  Clean --> Assistant
+  Assistant --> Users[Users / answers / protocols]
 ```
 
-## Карта интеграций
+## Integrations contour
 
 ```mermaid
 flowchart TB
-  J[Jira / ServiceDesk] -->|webhooks / REST| B1[jira-to-servicedesk]
-  B1 -->|BotX API| EX[eXpress messenger]
-  EX -->|messages / buttons| B1
-  B1 --> J
-
-  AD[Active Directory] <--LDAPS--> PB[pass_bot]
-  WH[Password expiry webhook] --> PB
-  PB --> EX
-
-  EV[User lifecycle events] --> AL[usercreatealertbot]
-  AL --> EX
+  Tracker[Issue tracker] <-->|REST / webhooks| Bridge[Integration service]
+  Bridge <-->|bot API| Chat[Corporate messenger]
+  Directory[Directory / identity] <--> Bot[Self-service bot]
+  Events[Lifecycle events] --> Alerts[Alert bot]
+  Bot --> Chat
+  Alerts --> Chat
 ```
 
 ---
 
-## Как смотреть
+## Notes
 
-1. Открой кейс из таблицы  
-2. Если интересна реализация — напиши, покажу private-репозитории на собеседовании  
-3. Секреты, внутренние URL и боевые конфиги сюда не попадают
+- Здесь только описания и схемы.
+- Код рабочих систем — в private-репозиториях, покажу на собеседовании.
+- Нет паролей, токенов, внутренних URL, IP и боевых конфигов.
 
----
+## Stack
 
-## Стек (коротко)
-
-`Python` · `FastAPI` · `Flask` · `Docker` · `REST/webhooks` · `LangChain` · `Qdrant` · `LLM` · `PyTorch` · `LDAP` · `Jira` · `pandas/openpyxl`
+`Python` · `FastAPI` · `Flask` · `Docker` · `REST/webhooks` · `LangChain` · `Qdrant` · `LLM` · `PyTorch` · `LDAP` · `pandas` · `openpyxl`

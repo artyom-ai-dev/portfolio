@@ -1,33 +1,29 @@
-# 03 · AD password self-service bot
+# 03 · Identity self-service bot
 
-## Задача
-Дать пользователям безопасную смену просроченного пароля Active Directory прямо из корпоративного мессенджера.
+## Problem
+Expired directory passwords created repetitive support tickets. Users needed a guided self-service flow inside the corporate messenger.
 
-## Что сделал
-**pass_bot** (Flask):
-- приём webhook о истекающих паролях
-- верификация сотрудника
-- проверка сложности пароля
-- смена через LDAPS
-- сессии/история в SQLite, Docker, healthcheck
+## What I built
+Messenger bot + webhook service:
+- receives password-expiry events
+- verifies the user
+- validates password policy
+- updates credentials through a secure directory connection
+- keeps session state and basic audit trail
 
-## Поток
+## Flow
 
 ```text
-Webhook (password expiry)
-    → сообщение в eXpress
-    → верификация пользователя
-    → ввод нового пароля + checks
-    → LDAPS password set
-    → подтверждение в чат
+Expiry event
+  → bot message in messenger
+  → user verification
+  → new password + policy checks
+  → secure directory update
+  → confirmation
 ```
 
-## Стек
-Python, Flask, LDAP3/LDAPS, webhooks, SQLite, Docker
+## Stack
+Python, Flask, LDAP/LDAPS, webhooks, SQLite, Docker
 
-## Результат
-Самообслуживание вместо ручных заявок в поддержку на типовом сценарии «пароль истёк».
-
-## Репозиторий
-Private: `pass_bot`  
-Смежный: `usercreatealertbot` (алерты по событиям учёток)
+## Outcome
+Common “password expired” cases moved to self-service instead of manual support handling.

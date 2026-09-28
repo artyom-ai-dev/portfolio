@@ -1,35 +1,31 @@
-# 02 · Jira ↔ Express sync
+# 02 · Messenger ↔ issue tracker sync
 
-## Задача
-Связать Jira и корпоративный мессенджер Express так, чтобы заявки жили в чатах: комментарии, файлы, статусы, оценка качества — без ручного копирования.
+## Problem
+Support work was split between an issue tracker and a corporate messenger. Comments, files, and status updates were copied manually.
 
-## Что сделал
-Сервис **jira-to-servicedesk** на FastAPI:
-- webhooks из Jira и Express
-- автосоздание групповых чатов по задачам
-- двусторонняя синхронизация комментариев и вложений
-- уведомления о статусах, CSAT, переоткрытие, эпики, ВКС-вебхуки
-- SQLite для связей чат ↔ задача, админ-команды, Docker/CI
+## What I built
+Integration service on FastAPI:
+- inbound/outbound webhooks
+- auto-created chats linked to issues
+- two-way sync of comments and attachments
+- status notifications and a simple CSAT flow
+- persistence for chat↔issue links, admin commands, Docker packaging
 
-## Поток
+## Flow
 
 ```mermaid
 flowchart LR
-  J[Jira issue event] --> API[FastAPI webhooks]
+  T[Issue tracker] --> API[API / webhooks]
   API --> H[Handlers]
-  H --> JC[JiraClient]
-  H --> EC[ExpressClient]
-  H --> DB[(SQLite links)]
-  JC --> Jira[(Jira REST)]
-  EC --> Express[(BotX API)]
+  H --> TC[Tracker client]
+  H --> MC[Messenger client]
+  H --> DB[(Link store)]
+  TC --> T
+  MC --> M[Messenger]
 ```
 
-## Стек
-Python, FastAPI, httpx/requests, webhooks, Jira REST, Express BotX, SQLite, Docker
+## Stack
+Python, FastAPI, REST, webhooks, SQLite, Docker
 
-## Результат
-Заявки сопровождаются в мессенджере end-to-end: меньше ручной рутины у поддержки, история и файлы не теряются между системами.
-
-## Репозиторий
-Private: `jira-to-servicedesk`  
-Смежные: `bot_jira` (SLA-дайджесты в каналы)
+## Outcome
+Issues can be handled in messenger end-to-end with less manual copying and fewer lost attachments/comments.

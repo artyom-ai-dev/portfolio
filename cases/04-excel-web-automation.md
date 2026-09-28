@@ -1,20 +1,17 @@
-# 04 · Excel / internal web automation
+# 04 · Internal web + Excel automation
 
-## Задача
-Убрать ручную возню с таблицами и почтой: внутренний веб-сервис с авторизацией, загрузкой Excel, обработкой данных и уведомлениями.
+## Problem
+Recurring spreadsheet work and email steps were manual, error-prone, and hard to standardize.
 
-## Что сделал
-**YGO_WEB** (Flask):
-- LDAP-авторизация и разграничение доступа
-- загрузка/обработка Excel через pandas + openpyxl
-- нормализация данных, сверки, выгрузки
-- email-сценарии (SMTP)
+## What I built
+Internal Flask web app:
+- directory-based auth and access control
+- Excel upload/processing with pandas + openpyxl
+- normalization, matching, exports
+- email notifications for completed flows
 
-## Стек
+## Stack
 Python, Flask, LDAP, pandas, openpyxl, SMTP
 
-## Результат
-Повторяемые операции с таблицами переведены в сервисный сценарий: меньше ручных ошибок, понятный UI для сотрудников.
-
-## Репозиторий
-Private: `YGO_WEB`
+## Outcome
+Repeated table operations became a service workflow with a simple UI for staff and fewer manual mistakes.
