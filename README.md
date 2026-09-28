@@ -1,15 +1,15 @@
 # Portfolio · Artem Tyukin
 
-Публичные разборы кейсов без исходников и без корпоративных секретов.
+Public case studies without source code and without corporate secrets.
 
-**Профиль:** [github.com/artyom-ai-dev](https://github.com/artyom-ai-dev)  
-**Контакт:** tyukin69@bk.ru
+**Profile:** [github.com/artyom-ai-dev](https://github.com/artyom-ai-dev)  
+**Contact:** tyukin69@bk.ru
 
 ---
 
-## Кейсы
+## Cases
 
-| # | Кейс | Тип |
+| # | Case | Type |
 |---|------|-----|
 | 01 | [AI platform: RAG, agents, meetings](cases/01-ai-platform.md) | AI |
 | 02 | [Messenger ↔ issue tracker sync](cases/02-messenger-tracker-sync.md) | Integrations |
@@ -46,9 +46,9 @@ flowchart TB
 
 ## Notes
 
-- Здесь только описания и схемы.
-- Код рабочих систем — в private-репозиториях, покажу на собеседовании.
-- Нет паролей, токенов, внутренних URL, IP и боевых конфигов.
+- Descriptions and diagrams only.
+- Production source code stays in private repositories; available on request in interviews.
+- No passwords, tokens, internal URLs, IPs, or live configs.
 
 ## Stack
 
