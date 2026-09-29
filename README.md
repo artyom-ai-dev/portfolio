@@ -55,8 +55,8 @@
 | # | Кейс | Тип | Стек |
 |---|------|------|------|
 | 01 | [AI-платформа: RAG, агенты, встречи](cases/01-ai-platform.md) | AI | FastAPI · LangChain · Qdrant · LLM · STT |
-| 02 | [Синхронизация мессенджер ↔ трекер](cases/02-messenger-tracker-sync.md) | Интеграции | FastAPI · webhooks · REST · Docker |
-| 03 | [Self-service бот по учёткам](cases/03-identity-self-service.md) | Автоматизация | Flask · LDAP/LDAPS · webhooks |
+| 02 | [Синхронизация мессенджер ↔ трекер](cases/02-messenger-tracker-sync.md) | Интеграции | FastAPI · Flask · webhooks · gunicorn · Docker |
+| 03 | [Self-service бот по учёткам](cases/03-identity-self-service.md) | Автоматизация | Flask · LDAP/LDAPS · FSM · webhooks · gunicorn |
 | 04 | [Внутренний веб + Excel-автоматизация](cases/04-excel-web-automation.md) | Fullstack / данные | Flask · LDAP · pandas · openpyxl |
 
 <img src="https://raw.githubusercontent.com/artyom-ai-dev/artyom-ai-dev/main/assets/divider.svg?v=6" width="100%" alt="" />
@@ -80,9 +80,11 @@ flowchart LR
 ```mermaid
 flowchart TB
   Tracker[Трекер задач] <-->|REST / webhooks| Bridge[Сервис интеграции]
+  Digests[SLA / дайджесты] -->|notification gateway| DigestBot[bot_jira]
   Bridge <-->|bot API| Chat[Корпоративный мессенджер]
-  Directory[Каталог / identity] <--> Bot[Self-service бот]
-  Events[События жизненного цикла] --> Alerts[Alert-бот]
+  DigestBot --> Chat
+  Directory[Каталог / identity] <--> Bot[pass_bot · FSM]
+  Events[События жизненного цикла] --> Alerts[usercreatealertbot]
   Bot --> Chat
   Alerts --> Chat
 ```
@@ -94,6 +96,7 @@ flowchart TB
 - Полный цикл: проблема → сервис → Docker → пользователи
 - AI там, где меняет реальный процесс (поиск по знаниям, встречи), а не как демо
 - Интеграции на границах систем: трекеры, мессенджеры, каталог, таблицы
+- Корпоративные боты в прод-стиле: слои api/domain/adapters, auth webhook, TLS, без утечек секретов
 
 <img src="https://raw.githubusercontent.com/artyom-ai-dev/artyom-ai-dev/main/assets/divider.svg?v=6" width="100%" alt="" />
 
@@ -107,4 +110,4 @@ flowchart TB
 
 ## Стек
 
-`Python` · `FastAPI` · `Flask` · `Docker` · `REST/webhooks` · `LangChain` · `Qdrant` · `LLM` · `PyTorch` · `LDAP` · `pandas` · `openpyxl`
+`Python` · `FastAPI` · `Flask` · `gunicorn` · `Docker` · `REST/webhooks` · `LangChain` · `Qdrant` · `LLM` · `PyTorch` · `LDAP` · `pandas` · `openpyxl`
