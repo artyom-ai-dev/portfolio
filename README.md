@@ -3,7 +3,7 @@
 Public case studies without source code and without corporate secrets.
 
 **Profile:** [github.com/artyom-ai-dev](https://github.com/artyom-ai-dev)  
-**Contact:** [tyukin69@bk.ru](mailto:tyukin69@bk.ru) · Yekaterinburg · hybrid / remote · open to work
+**Contact:** [tyukin69@bk.ru](mailto:tyukin69@bk.ru) · hybrid / remote · open to work
 
 > Артём Тюкин — fullstack / Python-инженер. Публично здесь только кейсы и схемы; прод-код в приватных репозиториях, разбор — на собеседовании.
 
