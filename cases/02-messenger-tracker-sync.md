@@ -1,44 +1,44 @@
-# 02 · Messenger ↔ issue tracker sync
+# 02 · Синхронизация мессенджер ↔ трекер
 
-## Problem
-Support work was split between an issue tracker and a corporate messenger. Comments, files, and status updates were copied manually.
+## Проблема
+Поддержка была разнесена между трекером задач и корпоративным мессенджером. Комментарии, файлы и статусы копировали вручную.
 
-## Role
-Backend / integration engineer — service design, webhooks, persistence, Docker packaging.
+## Роль
+Backend / integration-инженер — дизайн сервиса, webhooks, персистентность, Docker.
 
-## What I built
-Integration service on FastAPI:
-- inbound/outbound webhooks
-- auto-created chats linked to issues
-- two-way sync of comments and attachments
-- status notifications and a simple CSAT flow
-- persistence for chat↔issue links, admin commands, Docker packaging
+## Что сделал
+Сервис интеграции на FastAPI:
+- входящие / исходящие webhooks
+- автосоздание чатов, привязанных к задачам
+- двусторонняя синхронизация комментариев и вложений
+- уведомления о статусах и простой CSAT-флоу
+- хранение связей чат↔задача, админ-команды, упаковка в Docker
 
-Related: channel digests for SLA / ServiceDesk queues (`bot_jira`).
+Связанно: дайджесты SLA / очередей ServiceDesk в каналы (`bot_jira`).
 
-## Constraints
-- Two systems of record with different event models
-- Attachments and comments must not get lost in either direction
-- Must survive webhook retries and partial failures
+## Ограничения
+- Две системы учёта с разными моделями событий
+- Вложения и комментарии не должны теряться ни в одну сторону
+- Устойчивость к повторным webhook и частичным сбоям
 
-## Flow
+## Поток
 
 ```mermaid
 flowchart LR
-  T[Issue tracker] --> API[API / webhooks]
-  API --> H[Handlers]
-  H --> TC[Tracker client]
-  H --> MC[Messenger client]
-  H --> DB[(Link store)]
+  T[Трекер] --> API[API / webhooks]
+  API --> H[Обработчики]
+  H --> TC[Клиент трекера]
+  H --> MC[Клиент мессенджера]
+  H --> DB[(Связи)]
   TC --> T
-  MC --> M[Messenger]
+  MC --> M[Мессенджер]
 ```
 
-## Stack
+## Стек
 Python, FastAPI, REST, webhooks, SQLite, Docker
 
-## Related private repos
+## Связанные приватные репо
 `jira-to-servicedesk` · `bot_jira`
 
-## Outcome
-Issues can be handled in messenger end-to-end with less manual copying and fewer lost attachments/comments.
+## Результат
+Задачи можно вести в мессенджере end-to-end: меньше ручного копирования и потерь вложений/комментариев.

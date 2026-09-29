@@ -1,63 +1,63 @@
-# Portfolio · Artem Tyukin
+# Портфолио · Артём Тюкин
 
-Public case studies without source code and without corporate secrets.
+Публичные кейсы без исходников и без корпоративных секретов.
 
-**Profile:** [github.com/artyom-ai-dev](https://github.com/artyom-ai-dev)  
-**Contact:** [tyukin69@bk.ru](mailto:tyukin69@bk.ru) · hybrid / remote · open to work
+**Профиль:** [github.com/artyom-ai-dev](https://github.com/artyom-ai-dev)  
+**Контакт:** [tyukin69@bk.ru](mailto:tyukin69@bk.ru) · гибрид / удалёнка · открыт к предложениям
 
-> Артём Тюкин — fullstack / Python-инженер. Публично здесь только кейсы и схемы; прод-код в приватных репозиториях, разбор — на собеседовании.
-
----
-
-## Cases
-
-| # | Case | Type | Stack signals |
-|---|------|------|---------------|
-| 01 | [AI platform: RAG, agents, meetings](cases/01-ai-platform.md) | AI | FastAPI · LangChain · Qdrant · LLM · STT |
-| 02 | [Messenger ↔ issue tracker sync](cases/02-messenger-tracker-sync.md) | Integrations | FastAPI · webhooks · REST · Docker |
-| 03 | [Identity self-service bot](cases/03-identity-self-service.md) | Automation | Flask · LDAP/LDAPS · webhooks |
-| 04 | [Internal web + Excel automation](cases/04-excel-web-automation.md) | Fullstack / data | Flask · LDAP · pandas · openpyxl |
+> Артём Тюкин — fullstack / Python-инженер. Здесь только кейсы и схемы; прод-код в приватных репозиториях, разбор — на собеседовании.
 
 ---
 
-## AI contour
+## Кейсы
+
+| # | Кейс | Тип | Стек |
+|---|------|------|------|
+| 01 | [AI-платформа: RAG, агенты, встречи](cases/01-ai-platform.md) | AI | FastAPI · LangChain · Qdrant · LLM · STT |
+| 02 | [Синхронизация мессенджер ↔ трекер](cases/02-messenger-tracker-sync.md) | Интеграции | FastAPI · webhooks · REST · Docker |
+| 03 | [Self-service бот по учёткам](cases/03-identity-self-service.md) | Автоматизация | Flask · LDAP/LDAPS · webhooks |
+| 04 | [Внутренний веб + Excel-автоматизация](cases/04-excel-web-automation.md) | Fullstack / данные | Flask · LDAP · pandas · openpyxl |
+
+---
+
+## AI-контур
 
 ```mermaid
 flowchart LR
-  Docs[Knowledge base] --> Indexer[Indexer / embeddings]
-  Indexer --> Vector[(Vector DB)]
+  Docs[База знаний] --> Indexer[Индексатор / эмбеддинги]
+  Indexer --> Vector[(Векторная БД)]
   Vector --> Assistant[AI Assistant]
-  Audio[Meeting audio] --> Clean[Audio cleanup]
+  Audio[Аудио встреч] --> Clean[Очистка аудио]
   Clean --> Assistant
-  Assistant --> Users[Users / answers / protocols]
+  Assistant --> Users[Пользователи / ответы / протоколы]
 ```
 
-## Integrations contour
+## Контур интеграций
 
 ```mermaid
 flowchart TB
-  Tracker[Issue tracker] <-->|REST / webhooks| Bridge[Integration service]
-  Bridge <-->|bot API| Chat[Corporate messenger]
-  Directory[Directory / identity] <--> Bot[Self-service bot]
-  Events[Lifecycle events] --> Alerts[Alert bot]
+  Tracker[Трекер задач] <-->|REST / webhooks| Bridge[Сервис интеграции]
+  Bridge <-->|bot API| Chat[Корпоративный мессенджер]
+  Directory[Каталог / identity] <--> Bot[Self-service бот]
+  Events[События жизненного цикла] --> Alerts[Alert-бот]
   Bot --> Chat
   Alerts --> Chat
 ```
 
 ---
 
-## What this portfolio shows
+## Что показывает это портфолио
 
-- End-to-end ownership: problem → service → Docker → users
-- AI used where it changes a real process (knowledge search, meetings), not as a demo
-- Integration work at system boundaries: trackers, messengers, directory, spreadsheets
+- Полный цикл: проблема → сервис → Docker → пользователи
+- AI там, где меняет реальный процесс (поиск по знаниям, встречи), а не как демо
+- Интеграции на границах систем: трекеры, мессенджеры, каталог, таблицы
 
-## Notes
+## Примечания
 
-- Descriptions and diagrams only.
-- Production source code stays in private repositories; available on request in interviews.
-- No passwords, tokens, internal URLs, IPs, or live configs.
+- Только описания и схемы.
+- Прод-код остаётся в приватных репозиториях; доступ — по запросу на собеседовании.
+- Без паролей, токенов, внутренних URL, IP и боевых конфигов.
 
-## Stack
+## Стек
 
 `Python` · `FastAPI` · `Flask` · `Docker` · `REST/webhooks` · `LangChain` · `Qdrant` · `LLM` · `PyTorch` · `LDAP` · `pandas` · `openpyxl`

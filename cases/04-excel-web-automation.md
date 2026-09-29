@@ -1,28 +1,28 @@
-# 04 · Internal web + Excel automation
+# 04 · Внутренний веб + Excel-автоматизация
 
-## Problem
-Recurring spreadsheet work and email steps were manual, error-prone, and hard to standardize.
+## Проблема
+Повторяющаяся работа с таблицами и почтой была ручной, ошибочной и плохо стандартизированной.
 
-## Role
-Fullstack / data automation — Flask app, LDAP auth, Excel pipelines, email notifications.
+## Роль
+Fullstack / data automation — Flask-приложение, LDAP-авторизация, Excel-пайплайны, email-уведомления.
 
-## What I built
-Internal Flask web app:
-- directory-based auth and access control
-- Excel upload/processing with pandas + openpyxl
-- normalization, matching, exports
-- email notifications for completed flows
+## Что сделал
+Внутреннее Flask-приложение:
+- авторизация и доступ через каталог
+- загрузка/обработка Excel через pandas + openpyxl
+- нормализация, matching, выгрузки
+- email-уведомления по завершённым сценариям
 
-## Constraints
-- Staff need a simple UI, not a notebook or CLI
-- Spreadsheet formats vary; matching must be explicit and reviewable
-- Access control via corporate directory
+## Ограничения
+- Сотрудникам нужен простой UI, а не notebook или CLI
+- Форматы таблиц плавают; matching должен быть явным и проверяемым
+- Доступ — через корпоративный каталог
 
-## Stack
+## Стек
 Python, Flask, LDAP, pandas, openpyxl, SMTP
 
-## Related private repos
+## Связанные приватные репо
 `YGO_WEB`
 
-## Outcome
-Repeated table operations became a service workflow with a simple UI for staff and fewer manual mistakes.
+## Результат
+Повторяющиеся табличные операции стали сервисным сценарием с простым UI и меньшим числом ручных ошибок.

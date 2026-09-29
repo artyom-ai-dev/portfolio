@@ -1,42 +1,42 @@
-# 03 · Identity self-service bot
+# 03 · Self-service бот по учёткам
 
-## Problem
-Expired directory passwords created repetitive support tickets. Users needed a guided self-service flow inside the corporate messenger.
+## Проблема
+Истекшие пароли в каталоге порождали однотипные заявки в поддержку. Нужен guided self-service прямо в корпоративном мессенджере.
 
-## Role
-Backend / automation engineer — bot + webhook service, directory integration, basic audit trail.
+## Роль
+Backend / automation-инженер — бот + webhook-сервис, интеграция с каталогом, базовый audit trail.
 
-## What I built
-Messenger bot + webhook service:
-- receives password-expiry events
-- verifies the user
-- validates password policy
-- updates credentials through a secure directory connection
-- keeps session state and basic audit trail
+## Что сделал
+Бот в мессенджере + webhook-сервис:
+- принимает события об истечении пароля
+- проверяет пользователя
+- валидирует политику пароля
+- обновляет учётные данные через защищённое подключение к каталогу
+- хранит состояние сессии и базовый аудит
 
-Related: alerts on account lifecycle events (`usercreatealertbot`).
+Связанно: алерты по событиям жизненного цикла учёток (`usercreatealertbot`).
 
-## Constraints
-- Secure directory connection (LDAPS)
-- Password policy must be enforced before write
-- Session and audit trail for supportability
+## Ограничения
+- Защищённое подключение к каталогу (LDAPS)
+- Политика пароля должна проверяться до записи
+- Сессия и аудит — для сопровождения
 
-## Flow
+## Поток
 
 ```text
-Expiry event
-  → bot message in messenger
-  → user verification
-  → new password + policy checks
-  → secure directory update
-  → confirmation
+Событие истечения
+  → сообщение бота в мессенджере
+  → проверка пользователя
+  → новый пароль + проверки политики
+  → безопасное обновление в каталоге
+  → подтверждение
 ```
 
-## Stack
+## Стек
 Python, Flask, LDAP/LDAPS, webhooks, SQLite, Docker
 
-## Related private repos
+## Связанные приватные репо
 `pass_bot` · `usercreatealertbot`
 
-## Outcome
-Common “password expired” cases moved to self-service instead of manual support handling.
+## Результат
+Типовые кейсы «пароль истёк» ушли в self-service вместо ручной обработки поддержкой.

@@ -1,50 +1,50 @@
-# 01 · AI platform: RAG, agents, meetings
+# 01 · AI-платформа: RAG, агенты, встречи
 
-## Problem
-Need a corporate AI contour: answers over internal knowledge, agents with tools, meeting processing (audio → text → protocol), with respect to data-handling constraints.
+## Проблема
+Нужен корпоративный AI-контур: ответы по внутренней базе знаний, агенты с tools, обработка встреч (аудио → текст → протокол) с учётом ограничений по данным.
 
-## Role
-Software engineer / developer — design, backend, Docker packaging, integrations, ongoing ownership in production.
+## Роль
+Инженер-программист / разработчик — проектирование, бэкенд, Docker, интеграции, сопровождение в проде.
 
-## What I built
-- Multi-agent backend on FastAPI: routing, tool-calling, document collections, meeting summarization
-- Knowledge indexer: source pages → cleanup → chunking → embeddings → vector DB
-- Audio cleanup microservice for speech enhancement before STT
-- End-to-end meeting flow: recording segments → cleanup → transcription → protocol
+## Что сделал
+- Мультиагентский бэкенд на FastAPI: роутинг, tool-calling, коллекции документов, суммаризация встреч
+- Индексатор знаний: страницы → очистка → чанкинг → эмбеддинги → векторная БД
+- Микросервис очистки речи перед STT
+- Сквозной поток встреч: сегменты записи → очистка → транскрибация → протокол
 
-## Constraints
-- Sensitive corporate data — prefer local / corporate LLM where policy requires
-- Must plug into existing knowledge sources and meeting recording path
-- Services must be containerized and operable by the team
+## Ограничения
+- Чувствительные корпоративные данные — локальные / корпоративные LLM, где требует политика
+- Нужно встраиваться в существующие источники знаний и путь записи встреч
+- Сервисы должны быть в контейнерах и обслуживаемыми командой
 
-## Flow
+## Поток
 
 ```mermaid
 sequenceDiagram
-  participant U as User
+  participant U as Пользователь
   participant A as Assistant
-  participant V as Vector DB
-  participant C as Audio cleanup
+  participant V as Векторная БД
+  participant C as Очистка аудио
   participant L as LLM
 
-  U->>A: question / file / meeting audio
+  U->>A: вопрос / файл / аудио встречи
   alt RAG
-    A->>V: semantic search
-    V-->>A: chunks
-  else audio
-    A->>C: clean audio
-    C-->>A: enhanced audio
+    A->>V: семантический поиск
+    V-->>A: чанки
+  else аудио
+    A->>C: очистить аудио
+    C-->>A: улучшенное аудио
   end
-  A->>L: prompt + context / tools
-  L-->>A: answer / structured protocol
-  A-->>U: result
+  A->>L: промпт + контекст / tools
+  L-->>A: ответ / структурированный протокол
+  A-->>U: результат
 ```
 
-## Stack
-Python, FastAPI, LangChain, Qdrant, embeddings/TEI (`multilingual-e5-large`), Ollama/GigaChat, PyTorch (DeepFilterNet3), ffmpeg, Docker
+## Стек
+Python, FastAPI, LangChain, Qdrant, эмбеддинги/TEI (`multilingual-e5-large`), Ollama/GigaChat, PyTorch (DeepFilterNet3), ffmpeg, Docker
 
-## Related private repos
-`ai-assistant` · `confluence-sync-worker` · `clean-audio-service` · contribution to `Peregovornaya` (meeting recorder)
+## Связанные приватные репо
+`ai-assistant` · `confluence-sync-worker` · `clean-audio-service` · участие в `Peregovornaya` (запись встреч)
 
-## Outcome
-Production services in an enterprise contour: knowledge search via RAG, meeting protocols through an audio pipeline, containerized deploy and ownership of the stack.
+## Результат
+Прод-сервисы в корпоративном контуре: поиск по знаниям через RAG, протоколы встреч через аудио-пайплайн, контейнерный деплой и владение стеком.
