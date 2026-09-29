@@ -1,3 +1,9 @@
+<div align="center">
+  <img src="assets/portfolio-hero.png" width="100%" alt="Портфолио" />
+</div>
+
+<br />
+
 # Портфолио · Артём Тюкин
 
 Публичные кейсы без исходников и без корпоративных секретов.
@@ -7,9 +13,44 @@
 
 > Артём Тюкин — fullstack / Python-инженер. Здесь только кейсы и схемы; прод-код в приватных репозиториях, разбор — на собеседовании.
 
----
+<img src="https://raw.githubusercontent.com/artyom-ai-dev/artyom-ai-dev/main/assets/divider.svg?v=6" width="100%" alt="" />
 
 ## Кейсы
+
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <a href="cases/01-ai-platform.md">
+        <img src="assets/case-ai.png" width="100%" alt="AI-платформа" />
+      </a><br/>
+      <b><a href="cases/01-ai-platform.md">01 · AI-платформа</a></b><br/>
+      <sub>RAG · агенты · встречи</sub>
+    </td>
+    <td align="center" width="50%">
+      <a href="cases/02-messenger-tracker-sync.md">
+        <img src="assets/case-integrations.png" width="100%" alt="Интеграции" />
+      </a><br/>
+      <b><a href="cases/02-messenger-tracker-sync.md">02 · Мессенджер ↔ трекер</a></b><br/>
+      <sub>webhooks · двусторонняя синхронизация</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <a href="cases/03-identity-self-service.md">
+        <img src="assets/case-identity.png" width="100%" alt="Identity" />
+      </a><br/>
+      <b><a href="cases/03-identity-self-service.md">03 · Self-service по учёткам</a></b><br/>
+      <sub>LDAP · бот · автоматизация</sub>
+    </td>
+    <td align="center" width="50%">
+      <a href="cases/04-excel-web-automation.md">
+        <img src="assets/case-excel.png" width="100%" alt="Excel" />
+      </a><br/>
+      <b><a href="cases/04-excel-web-automation.md">04 · Веб + Excel</a></b><br/>
+      <sub>Flask · pandas · openpyxl</sub>
+    </td>
+  </tr>
+</table>
 
 | # | Кейс | Тип | Стек |
 |---|------|------|------|
@@ -18,7 +59,7 @@
 | 03 | [Self-service бот по учёткам](cases/03-identity-self-service.md) | Автоматизация | Flask · LDAP/LDAPS · webhooks |
 | 04 | [Внутренний веб + Excel-автоматизация](cases/04-excel-web-automation.md) | Fullstack / данные | Flask · LDAP · pandas · openpyxl |
 
----
+<img src="https://raw.githubusercontent.com/artyom-ai-dev/artyom-ai-dev/main/assets/divider.svg?v=6" width="100%" alt="" />
 
 ## AI-контур
 
@@ -32,6 +73,8 @@ flowchart LR
   Assistant --> Users[Пользователи / ответы / протоколы]
 ```
 
+<img src="https://raw.githubusercontent.com/artyom-ai-dev/artyom-ai-dev/main/assets/divider.svg?v=6" width="100%" alt="" />
+
 ## Контур интеграций
 
 ```mermaid
@@ -44,7 +87,7 @@ flowchart TB
   Alerts --> Chat
 ```
 
----
+<img src="https://raw.githubusercontent.com/artyom-ai-dev/artyom-ai-dev/main/assets/divider.svg?v=6" width="100%" alt="" />
 
 ## Что показывает это портфолио
 
@@ -52,11 +95,15 @@ flowchart TB
 - AI там, где меняет реальный процесс (поиск по знаниям, встречи), а не как демо
 - Интеграции на границах систем: трекеры, мессенджеры, каталог, таблицы
 
+<img src="https://raw.githubusercontent.com/artyom-ai-dev/artyom-ai-dev/main/assets/divider.svg?v=6" width="100%" alt="" />
+
 ## Примечания
 
 - Только описания и схемы.
 - Прод-код остаётся в приватных репозиториях; доступ — по запросу на собеседовании.
 - Без паролей, токенов, внутренних URL, IP и боевых конфигов.
+
+<img src="https://raw.githubusercontent.com/artyom-ai-dev/artyom-ai-dev/main/assets/divider.svg?v=6" width="100%" alt="" />
 
 ## Стек
 
