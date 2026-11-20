@@ -13,7 +13,7 @@
 **Профиль:** [github.com/artyom-ai-dev](https://github.com/artyom-ai-dev)  
 **Контакт:** [tyukin69@bk.ru](mailto:tyukin69@bk.ru) · гибрид / удалёнка · открыт к предложениям
 
-> Артём Тюкин — fullstack / Python-инженер. Здесь только кейсы и схемы; прод-код в приватных репозиториях, разбор — на собеседовании.
+> Артём Тюкин — fullstack-инженер (Backend · Frontend · AI · DevOps). Здесь только кейсы и схемы; прод-код в приватных репозиториях, разбор — на собеседовании.
 
 <img src="https://raw.githubusercontent.com/artyom-ai-dev/artyom-ai-dev/main/assets/divider.svg?v=6" width="100%" alt="" />
 
