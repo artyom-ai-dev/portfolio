@@ -8,6 +8,7 @@
 
 Публичные кейсы без исходников и без корпоративных секретов.
 
+**Сайт:** [prod-ai-cases.apps.grok.bot](https://prod-ai-cases.apps.grok.bot)  
 **Профиль:** [github.com/artyom-ai-dev](https://github.com/artyom-ai-dev)  
 **Контакт:** [tyukin69@bk.ru](mailto:tyukin69@bk.ru) · гибрид / удалёнка · открыт к предложениям
 
