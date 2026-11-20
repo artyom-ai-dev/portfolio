@@ -62,7 +62,9 @@ Python, FastAPI, LangChain, Qdrant, эмбеддинги/TEI (`multilingual-e5-l
 <img src="https://raw.githubusercontent.com/artyom-ai-dev/artyom-ai-dev/main/assets/divider.svg?v=6" width="100%" alt="" />
 
 ## Связанные приватные репо
-`ai-assistant` · `confluence-sync-worker` · `clean-audio-service` · участие в `Peregovornaya` (запись встреч)
+`ai-assistant` · `confluence-sync-worker` · `clean-audio-service` · `lir-package-service` (распаковка пакетов заявок → очередь для агента) · участие в `Peregovornaya` (запись встреч)
+
+Рядом по контуру (отдельные кейсы): [`05 · OCR чертежей`](05-drawing-ocr.md) · [`06 · LLM + Excel`](06-excel-llm-qa.md)
 
 <img src="https://raw.githubusercontent.com/artyom-ai-dev/artyom-ai-dev/main/assets/divider.svg?v=6" width="100%" alt="" />
 

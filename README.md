@@ -50,6 +50,22 @@
       <sub>Flask · pandas · openpyxl</sub>
     </td>
   </tr>
+  <tr>
+    <td align="center" width="50%">
+      <a href="cases/05-drawing-ocr.md">
+        <img src="assets/case-ai.png" width="100%" alt="OCR чертежей" />
+      </a><br/>
+      <b><a href="cases/05-drawing-ocr.md">05 · OCR чертежей</a></b><br/>
+      <sub>PDF · Tesseract · JSON для ERP</sub>
+    </td>
+    <td align="center" width="50%">
+      <a href="cases/06-excel-llm-qa.md">
+        <img src="assets/case-excel.png" width="100%" alt="LLM + Excel" />
+      </a><br/>
+      <b><a href="cases/06-excel-llm-qa.md">06 · LLM-проверка Excel</a></b><br/>
+      <sub>тысячи строк · локальная модель</sub>
+    </td>
+  </tr>
 </table>
 
 | # | Кейс | Тип | Стек |
@@ -58,6 +74,8 @@
 | 02 | [Синхронизация мессенджер ↔ трекер](cases/02-messenger-tracker-sync.md) | Интеграции | FastAPI · Flask · webhooks · gunicorn · Docker |
 | 03 | [Self-service бот по учёткам](cases/03-identity-self-service.md) | Автоматизация | Flask · LDAP/LDAPS · FSM · webhooks · gunicorn |
 | 04 | [Внутренний веб + Excel-автоматизация](cases/04-excel-web-automation.md) | Fullstack / данные | Flask · LDAP · pandas · openpyxl |
+| 05 | [OCR чертежей → структурированные данные](cases/05-drawing-ocr.md) | Document AI | FastAPI · PyMuPDF · Tesseract · Docker |
+| 06 | [LLM-проверка текстов в Excel](cases/06-excel-llm-qa.md) | Applied LLM | FastAPI · openpyxl · llama.cpp · SSE · Docker |
 
 <img src="https://raw.githubusercontent.com/artyom-ai-dev/artyom-ai-dev/main/assets/divider.svg?v=6" width="100%" alt="" />
 
@@ -70,7 +88,13 @@ flowchart LR
   Vector --> Assistant[AI Assistant]
   Audio[Аудио встреч] --> Clean[Очистка аудио]
   Clean --> Assistant
+  Pack[Пакеты заявок] --> LIR[lir-package-service]
+  LIR --> Assistant
   Assistant --> Users[Пользователи / ответы / протоколы]
+  Draw[Сканы чертежей] --> OCR[drawing-ocr]
+  OCR --> ERP[ERP / PLM]
+  XL[Excel акты] --> DA[ai-data-agent]
+  DA --> XL2[Размеченный Excel]
 ```
 
 <img src="https://raw.githubusercontent.com/artyom-ai-dev/artyom-ai-dev/main/assets/divider.svg?v=6" width="100%" alt="" />
@@ -94,8 +118,8 @@ flowchart TB
 ## Что показывает это портфолио
 
 - Полный цикл: проблема → сервис → Docker → пользователи
-- AI там, где меняет реальный процесс (поиск по знаниям, встречи), а не как демо
-- Интеграции на границах систем: трекеры, мессенджеры, каталог, таблицы
+- AI там, где меняет реальный процесс (поиск по знаниям, встречи, OCR, вычитка таблиц), а не как демо
+- Интеграции на границах систем: трекеры, мессенджеры, каталог, таблицы, чертежи
 - Корпоративные боты в прод-стиле: слои api/domain/adapters, auth webhook, TLS, без утечек секретов
 
 <img src="https://raw.githubusercontent.com/artyom-ai-dev/artyom-ai-dev/main/assets/divider.svg?v=6" width="100%" alt="" />
@@ -110,4 +134,4 @@ flowchart TB
 
 ## Стек
 
-`Python` · `FastAPI` · `Flask` · `gunicorn` · `Docker` · `REST/webhooks` · `LangChain` · `Qdrant` · `LLM` · `PyTorch` · `LDAP` · `pandas` · `openpyxl`
+`Python` · `FastAPI` · `Flask` · `gunicorn` · `Docker` · `REST/webhooks` · `LangChain` · `Qdrant` · `LLM` · `llama.cpp` · `Tesseract` · `PyTorch` · `LDAP` · `pandas` · `openpyxl`

@@ -18,11 +18,11 @@ Backend / integration-инженер — дизайн сервисов, webhooks
 
 ## Что сделал
 
-**jira-to-servicedesk** — двусторонний мост трекер ↔ мессенджер:
+**jira-to-servicedesk / bot-sd-jira** — двусторонний мост трекер ↔ мессенджер:
 - входящие / исходящие webhooks
 - автосоздание чатов, привязанных к задачам
 - синхронизация комментариев и вложений
-- статусы, CSAT, админ-команды, Docker
+- статусы, CSAT, эпики, ВКС, автоочистка чатов, админ-команды, Docker
 
 **bot_jira** — notification gateway для SLA/дайджестов:
 - `POST /jira` и `POST /servicedesk` → рассылка в проектные чаты
@@ -78,7 +78,7 @@ Python, FastAPI, Flask, gunicorn, REST, webhooks, BotX/eXpress, SQLite, Docker
 <img src="https://raw.githubusercontent.com/artyom-ai-dev/artyom-ai-dev/main/assets/divider.svg?v=6" width="100%" alt="" />
 
 ## Связанные приватные репо
-`jira-to-servicedesk` · `bot_jira`
+`jira-to-servicedesk` · `bot-sd-jira` · `bot_jira`
 
 <img src="https://raw.githubusercontent.com/artyom-ai-dev/artyom-ai-dev/main/assets/divider.svg?v=6" width="100%" alt="" />
 
