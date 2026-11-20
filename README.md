@@ -136,4 +136,4 @@ flowchart TB
 
 ## Стек
 
-`Python` · `FastAPI` · `Flask` · `gunicorn` · `Docker` · `REST/webhooks` · `LangChain` · `Qdrant` · `LLM` · `llama.cpp` · `Tesseract` · `PyTorch` · `LDAP` · `pandas` · `openpyxl`
+`Python` · `FastAPI` · `Flask` · `gunicorn` · `TypeScript` · `Vue 3` · `React` · `Next.js` · `Vite` · `Tailwind` · `Docker` · `Compose` · `GitLab CI/CD` · `Linux` · `REST/webhooks` · `LangChain` · `Qdrant` · `LLM` · `llama.cpp` · `Tesseract` · `PyTorch` · `LDAP` · `pandas` · `openpyxl`
